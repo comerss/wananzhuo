@@ -1,4 +1,4 @@
-package com.comers.wananzhuo.base
+package com.comers.wananzhuo.base.view
 
 /**
  * Created by 79653 on 2018/12/24.

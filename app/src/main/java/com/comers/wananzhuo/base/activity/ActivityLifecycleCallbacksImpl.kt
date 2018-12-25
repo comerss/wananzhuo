@@ -1,4 +1,4 @@
-package com.comers.wananzhuo.base
+package com.comers.wananzhuo.base.activity
 
 import android.app.Activity
 import android.app.Application
