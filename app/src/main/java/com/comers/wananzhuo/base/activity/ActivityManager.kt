@@ -1,6 +1,7 @@
 package com.comers.wananzhuo.base.activity
 
 import android.app.Activity
+import android.util.Log
 import java.util.*
 
 /**
@@ -59,6 +60,7 @@ object ActivityManager  {
         }
 
         activities.remove(activity)
+        Log.i("autoDispose","-----------------ActivityManager------onDestroy------------")
     }
 
     /**
@@ -99,5 +101,8 @@ object ActivityManager  {
      */
     fun isCurrentActivity(activity: Activity): Boolean {
         return currentActivity === activity
+    }
+    fun contains(activity: Activity):Boolean{
+        return activities.contains(activity)
     }
 }

@@ -5,6 +5,5 @@ package com.comers.wananzhuo.base.view
  * 描述：
  */
 interface AbstractView {
-    fun showToast(str: String?)
-    fun showError(str: String?)
+
 }
