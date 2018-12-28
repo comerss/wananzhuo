@@ -1,5 +1,6 @@
 package com.comers.wananzhuo.base.activity
 
+import android.arch.lifecycle.LifecycleObserver
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
@@ -14,6 +15,8 @@ abstract class AbstractActivity : AppCompatActivity() {
         initToolbar()
         initListener()
         initData()
+        lifecycle.addObserver(object :LifecycleObserver{
+        })
     }
 
     abstract fun getLayoutId(): Int

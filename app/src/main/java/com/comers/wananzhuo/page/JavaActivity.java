@@ -1,30 +1,28 @@
 package com.comers.wananzhuo.page;
 
-import android.os.Handler;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleObserver;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.OnLifecycleEvent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by 79653 on 2018/12/27.
  * 描述：
  */
-public  class JavaActivity  implements MainInterfaces.MainView {
+public  class JavaActivity  extends AppCompatActivity {
 
     @Override
-    public void showView() {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getLifecycle().addObserver(new LifecycleObserver() {
+            @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+            void onCreate(LifecycleOwner owner){
 
-    }
-    public static void main(String[] args){
-        final MainPresenter[] presenter = {new MainPresenter(new MainInterfaces.MainView() {
-            @Override
-            public void showView() {
-                
             }
-        })};
-        new Helper().getData(presenter[0]);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                presenter[0] =null;
-            }
-        }, 5000);
+
+        });
     }
 }

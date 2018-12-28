@@ -1,6 +1,8 @@
 package com.comers.wananzhuo.extra
 
 import android.app.Activity
+import android.arch.lifecycle.Lifecycle
+import android.support.v7.app.AppCompatActivity
 import io.reactivex.Maybe
 import io.reactivex.Observable
 import io.reactivex.Single
@@ -39,6 +41,23 @@ fun <T> Observable<T>.autoDispose(activity: Activity): Observable<T> {
         }
     }.filter {
         if (activity == null || activity.isFinishing) {
+            dispose?.dispose()
+        }
+        activity != null && !activity.isFinishing
+    }
+}
+fun <T> Observable<T>.autoDispose(activity: AppCompatActivity,event: Lifecycle.Event): Observable<T> {
+    var dispose: Disposable? = null
+    return this.doOnLifecycle({
+        dispose = it
+    }, {
+
+    }).doOnNext {
+        if (activity == null || activity.lifecycle.currentState==event) {
+            dispose?.dispose()
+        }
+    }.filter {
+        if (activity == null ||activity.lifecycle.currentState==event) {
             dispose?.dispose()
         }
         activity != null && !activity.isFinishing

@@ -28,6 +28,7 @@ class ActivityLifecycleCallbacksImpl : Application.ActivityLifecycleCallbacks {
     }
 
     override fun onActivityStopped(activity: Activity) {
+        ActivityManager.onPause(activity)
     }
 
     override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {

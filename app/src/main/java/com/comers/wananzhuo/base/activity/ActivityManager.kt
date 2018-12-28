@@ -2,6 +2,7 @@ package com.comers.wananzhuo.base.activity
 
 import android.app.Activity
 import android.util.Log
+import com.comers.wananzhuo.base.constant.ActivityEvent
 import java.util.*
 
 /**
@@ -104,5 +105,9 @@ object ActivityManager  {
     }
     fun contains(activity: Activity):Boolean{
         return activities.contains(activity)
+    }
+
+    fun getEvent(activity: Activity): ActivityEvent {
+        return ActivityEvent.onStop
     }
 }
