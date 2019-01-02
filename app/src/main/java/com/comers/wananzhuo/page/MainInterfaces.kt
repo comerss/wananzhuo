@@ -8,6 +8,6 @@ import com.comers.wananzhuo.base.view.AbstractView
  */
 interface MainInterfaces {
     interface MainView : AbstractView {
-        fun showView()
+
     }
 }

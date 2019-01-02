@@ -1,17 +1,12 @@
 package com.comers.wananzhuo.page
 
-import android.arch.lifecycle.Lifecycle
 import android.support.design.widget.BottomNavigationView
-import android.util.Log
 import com.comers.wananzhuo.R
 import com.comers.wananzhuo.base.activity.BaseMvpActivity
-import com.comers.wananzhuo.extra.autoDispose
-import com.comers.wananzhuo.extra.io_main
-import com.comers.wananzhuo.extra.showToast
-import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_home.*
-import java.util.concurrent.TimeUnit
-
+/*
+Home界面
+* */
 class HomeActivity : BaseMvpActivity<MainPresenter>(), MainInterfaces.MainView {
     override fun createPresenter(): MainPresenter {
         return MainPresenter(this, this)
@@ -29,19 +24,7 @@ class HomeActivity : BaseMvpActivity<MainPresenter>(), MainInterfaces.MainView {
     }
 
     override fun initData() {
-        Observable.interval(1000,TimeUnit.MILLISECONDS)
-            .io_main()
-            .autoDispose(this, Lifecycle.Event.ON_STOP)
-            .doOnNext{
-                Log.i("doOnNext","")
-            }
-            .subscribe {
-                showToast(it.toString())
-            }
-    }
-
-    override fun showView() {
-
+        mPresenter.getData()
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

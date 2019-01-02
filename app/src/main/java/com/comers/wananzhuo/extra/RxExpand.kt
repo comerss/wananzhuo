@@ -46,6 +46,8 @@ fun <T> Observable<T>.autoDispose(activity: Activity): Observable<T> {
         activity != null && !activity.isFinishing
     }
 }
+//可以根据Activity的生命周期来取消订阅，但是Activity前提是AppCompatActivity，他为我们提供了生命周期的方法，如果不用这个自己弄一个也是可以的
+//为了方便就用现成 的了
 fun <T> Observable<T>.autoDispose(activity: AppCompatActivity,event: Lifecycle.Event): Observable<T> {
     var dispose: Disposable? = null
     return this.doOnLifecycle({
